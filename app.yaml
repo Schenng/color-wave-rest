@@ -14,7 +14,7 @@
 # If this is the first Google App Engine Service you are deploying,
 # change 'modelserve' to 'default', since the first service must be
 # named 'default'.
-service: color-wave-220318
+service: default
 runtime: python
 env: flex
 entrypoint: gunicorn -b :$PORT main:app
