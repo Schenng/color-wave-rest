@@ -18,8 +18,12 @@ def index():
     print ("WORKING")
     return "Hello World", 200
 
+@app.route('/process', methods=['GET'])
+def process():
+    return "Process", 200
+
 @app.route('/image', methods=['GET'])
-def get_image():
+def image():
     image_url = "https://storage.cloud.google.com/color-wave-bucket/paintschainer.jpg"
     return image_url, 200
 
