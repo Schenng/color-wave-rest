@@ -3,7 +3,7 @@ import logging
 import os
 import pickle
 
-from flask import Flask, request
+from flask import Flask, request, send_file
 import cloudstorage as gcs
 from google.cloud import storage
 from google.appengine.api import app_identity
@@ -18,18 +18,25 @@ def index():
     print ("WORKING")
     return "Hello World", 200
 
+@app.route('/image', methods=['GET'])
+def get_image():
+    image_url = "https://storage.cloud.google.com/color-wave-bucket/paintschainer.jpg"
+    return image_url, 200
+
+# Lists the contents of the bucket
 @app.route('/bucket', methods=['GET'])
 def bucket():
     storage_client = storage.Client()
-    bucket_name = app_identity.get_default_gcs_bucket_name()
+    bucket_name = os.environ['MODEL_BUCKET']
     bucket = storage_client.get_bucket(bucket_name)
 
     blobs = bucket.list_blobs()
 
+    contents = ""
     for blob in blobs:
-        print(blob.name)
-   
-    return bucket_name, 200
+        contents += "\n" + blob.name        
+
+    return contents, 200
 
 @app.route('/predict', methods=['POST'])
 def predict():

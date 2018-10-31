@@ -10,3 +10,8 @@ handlers:
   static_dir: static
 - url: /.*
   script: main.app
+
+env_variables:
+  # The app will look for the model file at: gs://MODEL_BUCKET/MODEL_FILENAME
+  MODEL_BUCKET: color-wave-bucket
+  MODEL_FILENAME: lr.pkl
