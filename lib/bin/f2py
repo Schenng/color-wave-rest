@@ -1,4 +1,4 @@
-#!/Users/simon/miniconda3/envs/python27/bin/python
+#!/Users/simon/Projects/color-wave-rest/env/bin/python2.7
 # See http://cens.ioc.ee/projects/f2py2e/
 from __future__ import division, print_function
 
